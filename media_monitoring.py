@@ -9,7 +9,7 @@ def google_searcher(query):
     Query = query
     Limit = int(20)
 
-     s = HTMLSession()
+    s = HTMLSession()
 
     headers = {
         # Add the same headers as before
