@@ -36,8 +36,8 @@ def google_searcher(query):
             except AttributeError:
                 description = 'No description available'
             link = result.find('a')['href']  # Extract the link
-            title_ban = [None, 'untitled','untitle']
-            description_ban = ['No information is available for this page']
+            title_ban = ['untitled','untitle']
+            description_ban = ['no information is available for this page']
             url_ban = ['linkedin','jobstreet','loker']
             if 'google' not in link and title.lower() not in title_ban and description.lower() not in description_ban and link.lower() not in url_ban:
                 links_list.append(link)
