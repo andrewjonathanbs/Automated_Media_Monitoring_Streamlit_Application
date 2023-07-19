@@ -23,8 +23,8 @@ def google_searcher(query):
 
     response = s.get('https://www.google.com/search', params=params)
 
-    if 'did not match any documents' in response.text:
-        exit('No Results Found')
+if 'did not match any documents' in response.text:
+        return []  # Return an empty list when no results are found
     elif 'Our systems have detected unusual traffic from your computer' in response.text:
         exit('Captcha Triggered!\nUse Vpn Or Try After Sometime.')
     else:
