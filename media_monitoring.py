@@ -39,13 +39,8 @@ def google_searcher(query):
                 description = 'No description available'
             link = result.find('a')['href']  # Extract the link
             if 'google' not in link:
-                links_list.append(link)
-                file.write(link + '\n')
-                # Print the title and description of each result
-                st.write("Title:", title)
-                st.write("Description:", description)
-                st.write("URL:", link)
-                st.write("\n")
+                links_list.append({'title': title, 'description': description, 'url': link})
+        return links_list
 
 def display_results(keyword):
     today = datetime.today().date()
@@ -61,9 +56,12 @@ def display_results(keyword):
         st.write("URL:", result['url'])
         st.write("\n")
 
+# Set the page config only once at the beginning of the script
+st.set_page_config(page_title='Automated Media Monitoring')
+
 # Run the Streamlit app with next and previous buttons to navigate through keywords
 if __name__ == "__main__":
-    keywords = ['Anugerah Pharmindo Lestari', 'Christopher Piganiol', 'PT APL','APL','APL Healthcare','APL Sustainability','APL Distributor Farmasi','Layanan Kesehatan APL','Ratna Kurniawati','Wishnu Satya','Jesianto Nugroho','Denny Fikri','Ay Lie Widjaja','Bernadina Okti Adiyanti']
+    keywords = ['Anugerah Pharmindo Lestari', 'Christopher Piganiol', 'APL Healthcare']
 
     # Initialize session_state
     if 'index' not in st.session_state:
