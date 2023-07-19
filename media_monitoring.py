@@ -39,7 +39,7 @@ def google_searcher(query):
             title_ban = [None, 'untitled','untitle']
             description_ban = ['No information is available for this page']
             url_ban = ['linkedin','jobstreet']
-            if 'google' not in link and title.lower() not in title_ban and description.lower() not in description_ban and url.lower() not in url_ban:
+            if 'google' not in link and (title.lower() not in title_ban) and (description.lower() not in description_ban) and (url.lower() not in url_ban):
                 links_list.append(link)
                 file.write(link + '\n')
                 # Print the title and description of each result
