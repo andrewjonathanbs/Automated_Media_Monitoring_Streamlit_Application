@@ -1,7 +1,5 @@
 import streamlit as st
 from datetime import datetime
-import time
-import requests
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 
@@ -24,7 +22,7 @@ def google_searcher(query):
     response = s.get('https://www.google.com/search', params=params)
 
     if 'did not match any documents' in response.text:
-        return []  # Return an empty list when no results are found
+        exit('No Results Found')
     elif 'Our systems have detected unusual traffic from your computer' in response.text:
         exit('Captcha Triggered!\nUse Vpn Or Try After Sometime.')
     else:
@@ -39,8 +37,13 @@ def google_searcher(query):
                 description = 'No description available'
             link = result.find('a')['href']  # Extract the link
             if 'google' not in link:
-                links_list.append({'title': title, 'description': description, 'url': link})
-        return links_list
+                links_list.append(link)
+                file.write(link + '\n')
+                # Print the title and description of each result
+                st.write("Title:", title)
+                st.write("Description:", description)
+                st.write("URL:", link)
+                st.write("\n")
 
 def display_results(keyword):
     today = datetime.today().date()
@@ -55,9 +58,6 @@ def display_results(keyword):
         st.write("Description:", result['description'])
         st.write("URL:", result['url'])
         st.write("\n")
-
-# Set the page config only once at the beginning of the script
-st.set_page_config(page_title='Automated Media Monitoring')
 
 # Run the Streamlit app with next and previous buttons to navigate through keywords
 if __name__ == "__main__":
