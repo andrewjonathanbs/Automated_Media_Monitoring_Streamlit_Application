@@ -2,16 +2,14 @@ import streamlit as st
 from datetime import datetime
 import time
 import requests
-
+from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 
 def google_searcher(query):
     Query = query
     Limit = int(20)
 
-    file = open('Results.txt', 'w')
-
-    s = requests.Session()
+     s = HTMLSession()
 
     headers = {
         # Add the same headers as before
