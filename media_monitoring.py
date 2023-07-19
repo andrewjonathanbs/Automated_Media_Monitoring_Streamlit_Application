@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 import requests
 from requests_html import HTMLSession
-from bs4 import BeautifulSoup
+from beautifulsoup4 import BeautifulSoup
 
 def google_searcher(query):
     Query = query
