@@ -36,7 +36,8 @@ def google_searcher(query):
             except AttributeError:
                 description = 'No description available'
             link = result.find('a')['href']  # Extract the link
-            if 'google' not in link and title not 'Untitled':
+            title_ban = [None, 'untitled','untitle']
+            if 'google' not in link and title.lower() not in title_ban:
                 links_list.append(link)
                 file.write(link + '\n')
                 # Print the title and description of each result
