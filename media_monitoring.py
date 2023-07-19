@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 import requests
 from requests_html import HTMLSession
-from beautifulsoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 def google_searcher(query):
     Query = query
@@ -61,7 +61,7 @@ st.set_page_config(page_title='Automated Media Monitoring')
 
 # Run the Streamlit app with next and previous buttons to navigate through keywords
 if __name__ == "__main__":
-    keyword = ['Anugerah Pharmindo Lestari', 'Christopher Piganiol', 'PT APL','APL','APL Healthcare','APL Sustainability','APL Distributor Farmasi','Layanan Kesehatan APL','Ratna Kurniawati','Wishnu Satya','Jesianto Nugroho','Denny Fikri','Ay Lie Widjaja','Bernadina Okti Adiyanti']
+    keywords = ['Anugerah Pharmindo Lestari', 'Christopher Piganiol', 'PT APL','APL','APL Healthcare','APL Sustainability','APL Distributor Farmasi','Layanan Kesehatan APL','Ratna Kurniawati','Wishnu Satya','Jesianto Nugroho','Denny Fikri','Ay Lie Widjaja','Bernadina Okti Adiyanti']
 
     # Initialize session_state
     if 'index' not in st.session_state:
